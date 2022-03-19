@@ -7,4 +7,16 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="mag_less0">#606060</color>
+    <color name="mag_less1">#8BC34A</color>
+    <color name="mag_less2">#ADC542</color>
+    <color name="mag_less3">#C5A942</color>
+    <color name="mag_less4">#C59142</color>
+    <color name="mag_less5">#C57F42</color>
+    <color name="mag_less6">#C57042</color>
+    <color name="mag_less7">#AC5439</color>
+    <color name="mag_less8">#70251C</color>
+    <color name="mag_less9">#801313</color>
+    <color name="mag_less10">#9F0000</color>
 </resources>
