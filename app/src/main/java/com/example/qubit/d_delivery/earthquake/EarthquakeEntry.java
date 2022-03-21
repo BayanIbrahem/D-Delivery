@@ -1,7 +1,8 @@
-package com.example.qubit.d_delivery;
+package com.example.qubit.d_delivery.earthquake;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 public class EarthquakeEntry {
     private double magnitude;
@@ -48,7 +49,8 @@ public class EarthquakeEntry {
         SimpleDateFormat formatter = new SimpleDateFormat(template);
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(date);
-        return formatter.format(calendar);
+        Date date = calendar.getTime();
+        return formatter.format(date);
     }
     public String getFormattedDate(){
         return getFormattedDate("yyyy-mm-dd");

@@ -1,4 +1,4 @@
-package com.example.qubit.d_delivery;
+package com.example.qubit.d_delivery.connection;
 
 import static android.content.ContentValues.TAG;
 
