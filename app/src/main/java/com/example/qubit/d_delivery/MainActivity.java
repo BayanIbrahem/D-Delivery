@@ -52,7 +52,12 @@ public class MainActivity extends AppCompatActivity {
         model.getEarthquakes().observe( this, earthquakeEntryList -> {
             UpdateUI();
         } );
+        runOnUiThread( new Runnable() {
+            @Override
+            public void run () {
 
+            }
+        } );
 
     }
 
@@ -79,69 +84,5 @@ public class MainActivity extends AppCompatActivity {
         }
         return true;
     }
-
-//    public class MyViewModel extends ViewModel {
-//
-//        private static final String URL =
-//                "https://earthquake.usgs.gov/fdsnws/event/1/";
-//
-//        public List<EarthquakeEntry> earthquakes = new ArrayList<>();
-//        public boolean isCreated = false;
-//
-//
-//        public void setEarthquakes(){
-//            if(isCreated){
-//                return;
-//            }
-//            NetworkingBackground bgThread = new NetworkingBackground();
-//            String readyUrl = setURLAttributes(URL);
-//            bgThread.execute(readyUrl);//initialising jsonObject
-//        }
-//        public List<EarthquakeEntry> getEarthquakes(){
-//        if(!isCreated){
-//            setEarthquakes();
-//        }
-//            return earthquakes;
-//        }
-//
-//        private String setURLAttributes(String rootUrl){
-//            CreateURL creator = new CreateURL(rootUrl);
-//
-//            creator.addFormatAttr(FormatValues.JSON);
-//            creator.addLimitAttr(500);
-//            creator.addMaxMagnitudeAttr(9);
-//            creator.addMinMagnitudeAttr(1);
-//            creator.addOffsetAttr(1);
-//            creator.addOrderAttr(OrderValues.MAG_DSC);
-//            creator.reAddStartTimeAttr(TimeValue.YEAR.YEAR_2022, TimeValue.MONTH.MONTH_3, TimeValue.DAY.DAY_15);
-//
-//            Log.i(TAG, "THE GENERATED URL IS: " + creator.getQuery());
-//
-//            return creator.getQueryAndResetAll();
-//        }
-//
-//        private class NetworkingBackground extends AsyncTask<String, Void, List<EarthquakeEntry>> {
-//            @Override
-//            protected List<EarthquakeEntry> doInBackground(String... strUrls) {
-//                JSONObject jsonObject = STR_TO_JSON.getJsonObject(strUrls[0]);
-//                earthquakes = JSON_TO_VAL.getEntryList(jsonObject, -1);
-//                return earthquakes;
-//            }
-//
-//            @Override
-//            protected void onPreExecute(){
-//                Log.v(TAG, " background thread started");
-//            }
-//
-//            @Override
-//            protected void onPostExecute(List<EarthquakeEntry> earthquakes){
-//                Log.v(TAG, "background thread ended");
-//                if(earthquakes != null) {
-//                    isCreated = true;
-//                    UpdateUI();
-//                }
-//            }
-//        }
-//    }
 
 }

@@ -34,6 +34,7 @@ public class EarthquakeListAdapter extends ArrayAdapter<EarthquakeEntry> {
         double magnitude = earthquake.getMagnitude();
         DecimalFormat format = new DecimalFormat("0.0");
         format.setRoundingMode(RoundingMode.CEILING);
+
         //string formatter.
 
         mag.setText(format.format(magnitude));

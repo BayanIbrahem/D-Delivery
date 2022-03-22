@@ -47,25 +47,6 @@ public class UsrViewModel extends ViewModel {
         networkThread.execute( URL );
     }
 
-//    private class BG_Thread implements Runnable{
-//        List<EarthquakeEntry> earthquakesList;
-//
-//        BG_Thread(){
-//            earthquakesList = new ArrayList<>();
-//        }
-//
-//        @Override
-//        public void run () {
-//        String readyURL = setURL_ATTR(URL);
-//        JSONObject jsonObject = STR_TO_JSON.getJsonObject(readyURL);
-//        earthquakesList = JSON_TO_VAL.getEntryList(jsonObject, -1);
-//        }
-//
-//        public List<EarthquakeEntry> getEarthquakeList(){
-//            return earthquakesList;
-//        }
-//    }
-
     private class BG_Thread extends AsyncTask<String, Void, List<EarthquakeEntry>> {
 
         @Override
@@ -92,6 +73,10 @@ public class UsrViewModel extends ViewModel {
             Log.i( TAG, "THE GENERATED URL IS: " + creator.getQuery() );
 
             return creator.getQuery();
+        }
+
+        protected void afterFinishing(){
+
         }
     }
 }

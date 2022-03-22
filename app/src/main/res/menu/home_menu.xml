@@ -5,5 +5,9 @@
         android:id="@+id/menu_refresh"
         android:title="refresh"
         app:showAsAction="always">
+        <menu>
+
+        </menu>
     </item>
+
 </menu>
