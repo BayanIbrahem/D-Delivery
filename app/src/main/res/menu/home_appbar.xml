@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home_menu_appBarMenu_search"
+        android:title="Search"
+        app:actionViewClass="android.widget.SearchView"
+        app:showAsAction="always"></item><!-->search item<-->
+    <group
+        android:id="@+id/home_menu_appBarMenu_group1">
+        <item
+            android:id="@+id/home_menu_appBarMenu_group1_theme"
+            android:title="Theme"
+            app:showAsAction="collapseActionView"></item><!-->theme<-->
+        <item
+            android:id="@+id/home_menu_appBarMenu_group1_setting"
+            android:title="Setting"
+            app:showAsAction="collapseActionView"></item><!-->setting<-->
+    </group><!-->grope 1<-->
+    <group
+        android:id="@+id/home_menu_appBarMenu_group2">
+        <item
+            android:id="@+id/home_menu_appBarMenu_group2_about"
+            android:title="About"
+            app:showAsAction="collapseActionView"></item>
+    </group><!-->grope 2<-->
+
+</menu>
