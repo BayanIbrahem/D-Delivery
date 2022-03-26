@@ -1,29 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
-
+<!-->Navigation is an advanced concept so will make this menu available as an alternative of it<-->
     <item
         android:id="@+id/home_menu_appBarMenu_search"
         android:title="Search"
         app:actionViewClass="android.widget.SearchView"
-        app:showAsAction="always"></item><!-->search item<-->
-    <group
-        android:id="@+id/home_menu_appBarMenu_group1">
-        <item
-            android:id="@+id/home_menu_appBarMenu_group1_theme"
-            android:title="Theme"
-            app:showAsAction="collapseActionView"></item><!-->theme<-->
-        <item
-            android:id="@+id/home_menu_appBarMenu_group1_setting"
-            android:title="Setting"
-            app:showAsAction="collapseActionView"></item><!-->setting<-->
-    </group><!-->grope 1<-->
-    <group
-        android:id="@+id/home_menu_appBarMenu_group2">
-        <item
-            android:id="@+id/home_menu_appBarMenu_group2_about"
-            android:title="About"
-            app:showAsAction="collapseActionView"></item>
-    </group><!-->grope 2<-->
+        app:showAsAction="always">
+    </item><!-->search item<-->
+    <item
+        android:id="@+id/home_menu_appBarMenu_options"
+        android:title="Options"
+        android:icon="@drawable/ic_more_vert_x24"
+        app:showAsAction="ifRoom">
+        <menu>
+            <group
+                android:id="@+id/home_menu_appBarMenu_group1">
+                <item
+                    android:id="@+id/home_menu_appBarMenu_group1_theme"
+                    android:title="Theme"
+                    android:icon="@drawable/ic_theme_x24"
+                    app:showAsAction="withText">
+                </item><!-->theme<-->
+                <item
+                    android:id="@+id/home_menu_appBarMenu_group1_setting"
+                    android:title="Setting"
+                    android:icon="@drawable/ic_settings_x24"
+                    app:showAsAction="withText">
+                </item><!-->setting<-->
+            </group><!-->grope 1<-->
+            <group
+                android:id="@+id/home_menu_appBarMenu_group2">
+                <item
+                    android:id="@+id/home_menu_appBarMenu_group2_products"
+                    android:title="Products"
+                    android:icon="@drawable/ic_products_x24"
+                    app:showAsAction="withText">
+                </item><!-->products<-->
+            </group><!-->grope 2<-->
+            <group
+                android:id="@+id/home_menu_appBarMenu_group3">
+                <item
+                    android:id="@+id/home_menu_appBarMenu_group3_profile"
+                    android:title="Profile"
+                    android:icon="@drawable/ic_profile_x24"
+                    app:showAsAction="withText">
+                </item><!-->profile<-->
+                <item
+                    android:id="@+id/home_menu_appBarMenu_group3_about"
+                    android:title="About"
+                    android:icon="@drawable/ic_about_x24"
+                    app:showAsAction="withText">
+                </item>
+            </group><!-->grope 3<-->
+        </menu>
+    </item>
 
 </menu>

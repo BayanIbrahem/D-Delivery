@@ -1,4 +1,4 @@
-package com.example.qubit.d_delivery;
+package com.example.qubit.d_delivery.ui;
 /** Names:
  *  -every id we name it like it is a path: <activityNameInLowerCase>_<typeOfTheItemInOnWORD>_<nameOfTheItem>
  *      like: home_menu_appBarMenu, home_menu_appBarMenu_searchView...
@@ -17,14 +17,20 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.SearchView;
 
+import com.example.qubit.d_delivery.R;
 import com.example.qubit.d_delivery.addition.ProToast;
-import com.example.qubit.d_delivery.dialogs.AboutDialog;
-import com.example.qubit.d_delivery.enums.ViewTypeEnum;
 
-/**on progress: setting menu of home page...**/
+import com.example.qubit.d_delivery.dialogs.AboutDialog;
+import com.example.qubit.d_delivery.enums.ActivityEnum;
+import com.example.qubit.d_delivery.enums.ViewTypeEnum;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+/** setting menu of home page -DONE-
+ * on progress: navigation bar (bottom bar)**/
 public class HomeActivity extends AppCompatActivity {
 
     //UI Variables A-Z:
+    BottomNavigationView navBottom;
     Menu appBarMenu;
     ProToast toast;
     SearchView appBarMenuSearchView;
@@ -41,7 +47,7 @@ public class HomeActivity extends AppCompatActivity {
         this.appBarMenu = menu;
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.home_appbar, menu);
-        MenuCompat.setGroupDividerEnabled(menu, true);
+        MenuCompat.setGroupDividerEnabled(menu, true);/*this to put a divider between each group*/
         appBarMenuSearchView = (SearchView) menu.findItem(R.id.home_menu_appBarMenu_search).getActionView();
         setSearchViewActions();
         return true;
@@ -56,9 +62,15 @@ public class HomeActivity extends AppCompatActivity {
                 toast.show("coming soon...");
                 break;
             case R.id.home_menu_appBarMenu_group1_setting:
-                goToSettingActivity();
+                goToActivity(ActivityEnum.SETTING);
                 break;
-            case R.id.home_menu_appBarMenu_group2_about:
+            case R.id.home_menu_appBarMenu_group2_products:
+                goToActivity(ActivityEnum.PRODUCTS);
+                break;
+            case R.id.home_menu_appBarMenu_group3_profile:
+                goToActivity(ActivityEnum.PROFILE);
+                break;
+            case R.id.home_menu_appBarMenu_group3_about:
                 AboutDialog dialog = new AboutDialog();
                 dialog.show(getSupportFragmentManager(), "About");
                 break;
@@ -74,10 +86,31 @@ public class HomeActivity extends AppCompatActivity {
         appBarMenuSearchView.setSearchableInfo(manager.getSearchableInfo(getComponentName()));
         appBarMenuSearchView.setOnQueryTextListener(new LocalQueryTextListener(ViewTypeEnum.SEARCH_VIEW));
     }
-    private void goToSettingActivity(){
-        Intent searchIntent = new Intent(getApplicationContext(), SearchActivity.class);
-        searchIntent.putExtra("from", "home");
-        startActivity(searchIntent);
+    public void goToActivity(ActivityEnum activity){
+        Intent intent = null;
+        String to = "";
+        switch(activity){
+            case HOME:
+                break;
+            case PROFILE:
+                intent = new Intent(this, ProfileActivity.class);
+                to = "profile";
+                break;
+            case PRODUCTS:
+                intent = new Intent(this, ProductsActivity.class);
+                to = "products";
+                break;
+            case SETTING:
+                intent = new Intent(this, SettingActivity.class);
+                to = "setting";
+                break;
+            default:
+                return;
+        }
+        if(intent != null) {
+            intent.putExtra("from home to ", to);
+            startActivity(intent);
+        }
     }
 
     private class LocalQueryTextListener implements SearchView.OnQueryTextListener{
@@ -107,7 +140,7 @@ public class HomeActivity extends AppCompatActivity {
         private void searchViewSubmit(String query){
             toast.show("SUBMIT: " +query);
             /*collapsing the search view:*/
-            /*or:*/
+            /*this worked for me*/
             appBarMenuSearchView.onActionViewCollapsed();
             /*or2:*/
             /*invalidateOptionsMenu();*/
